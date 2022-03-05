@@ -1,31 +1,28 @@
 import csv
 import json
+from operator import index
 import uuid
-import requests
 import zipfile
+import urllib
+import urllib.request
+import time
+
 
 # Download
-print('Download jodi_gas_csv_beta.zip')
 url = r'https://www.jodidata.org/_resources/files/downloads/gas-data/jodi_gas_csv_beta.zip'
-output = r'./jodi_gas_csv_beta.zip'
+extract_dir = './'
 
-r = requests.get(url)
-with open(output, 'wb') as f:
-    f.write(r.content)
-
-# Unzip
-print('Unzip jodi_gas_beta.csv')
-destination = '.'
-
-with zipfile.ZipFile(output) as zf:
-    zf.extractall(destination)
+#UnZip
+print('Download jodi_gas_csv_beta.zip')
+zip_path, _ = urllib.request.urlretrieve(url)
+with zipfile.ZipFile(zip_path, "r") as f:
+    print('Unzip')
+    f.extractall(extract_dir)
 
 # Program
-
-
 def csv_to_json(csvFilePath, jsonFilePath):
     print('Processing output csv data to json')
-    # Open the json file to enter line by line the result of the loop for
+    time.sleep( 4 )    # Open the json file to enter line by line the result of the loop for
     dataJson = open(jsonFilePath, 'w')
 
     # Open csv file
@@ -46,7 +43,6 @@ def csv_to_json(csvFilePath, jsonFilePath):
             key2 = row[2]
             # Generate a unique series id
             id = str(uuid.uuid4().hex)
-            # combining to make sense id it is identifying
             series_id = id + "_" + key1 + "_" + key2
             # Set the id to data
             data['series_id'] = series_id
@@ -71,7 +67,7 @@ def csv_to_json(csvFilePath, jsonFilePath):
             json.dump(data, dataJson)
             # New line to add and persist with the last line
             dataJson.write('\n')
-
+    print('data.json ready')
     dataJson.close()
 
 
