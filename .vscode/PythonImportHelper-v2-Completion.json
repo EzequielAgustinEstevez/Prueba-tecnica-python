@@ -54,28 +54,11 @@
         "documentation": {}
     },
     {
-        "label": "time",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
-        "documentation": {}
-    },
-    {
-        "label": "index",
-        "importPath": "operator",
-        "description": "operator",
-        "isExtraImport": true,
-        "detail": "operator",
-        "documentation": {}
-    },
-    {
         "label": "csv_to_json",
         "kind": 2,
         "importPath": "beta.cvsToJson",
         "description": "beta.cvsToJson",
-        "peekOfCode": "def csv_to_json(csvFilePath, jsonFilePath):\n    print('Interpret csv data to code')\n    time.sleep(4)\n    # Open csv file\n    with open(csvFilePath, encoding='utf-8') as csvf:\n        # read csv file data using the csv library's dictionary delimiter by \",\"\n        csvReader = csv.reader(csvf, delimiter=',')\n        # Ignore first line\n        next(csvReader)\n        # for loop to",
+        "peekOfCode": "def csv_to_json(csvFilePath, jsonFilePath):\n    print('Interpret csv data to code')\n    # Open csv file\n    with open(csvFilePath, encoding='utf-8') as csvf:\n        # read csv file data using the csv library's dictionary delimiter by \",\"\n        csvReader = csv.reader(csvf, delimiter=',')\n        # Ignore first line\n        next(csvReader)\n        # for loop to\n        outPutData = []",
         "detail": "beta.cvsToJson",
         "documentation": {}
     },
@@ -102,7 +85,7 @@
         "kind": 5,
         "importPath": "beta.cvsToJson",
         "description": "beta.cvsToJson",
-        "peekOfCode": "output = r'./jodi_gas_csv_beta.zip'\n#UnZip\nprint('Unziping')\nzip_path, _ = urllib.request.urlretrieve(url)\nwith zipfile.ZipFile(zip_path, \"r\") as f:\n    f.extractall(extract_dir)\n# Program\ndef csv_to_json(csvFilePath, jsonFilePath):\n    print('Interpret csv data to code')\n    time.sleep(4)",
+        "peekOfCode": "output = r'./jodi_gas_csv_beta.zip'\n#UnZip\nprint('Unziping')\nzip_path, _ = urllib.request.urlretrieve(url)\nwith zipfile.ZipFile(zip_path, \"r\") as f:\n    f.extractall(extract_dir)\n# Program\ndef csv_to_json(csvFilePath, jsonFilePath):\n    print('Interpret csv data to code')\n    # Open csv file",
         "detail": "beta.cvsToJson",
         "documentation": {}
     },
@@ -129,7 +112,7 @@
         "kind": 2,
         "importPath": "final.cvsToJsonV2",
         "description": "final.cvsToJsonV2",
-        "peekOfCode": "def csv_to_json(csvFilePath, jsonFilePath):\n    print('Processing output csv data to json')\n    time.sleep( 4 )    # Open the json file to enter line by line the result of the loop for\n    dataJson = open(jsonFilePath, 'w')\n    # Open csv file\n    with open(csvFilePath, encoding='utf-8') as csvf:\n        # read csv file data using the csv library, delimiter by\",\"\n        csvReader = csv.reader(csvf, delimiter=',')\n        # Ignore first line\n        next(csvReader)",
+        "peekOfCode": "def csv_to_json(csvFilePath, jsonFilePath):\n    print('Writing one series per line in data.json')\n    # Opens of the Json file write mode to enter the result of the loop line by line for\n    dataJson = open(jsonFilePath, 'w')\n    # Open csv file\n    with open(csvFilePath, encoding='utf-8') as csvf:\n        # read csv file data using the csv library, delimiter by \",\"\n        csvReader = csv.reader(csvf, delimiter=',')\n        # Ignore first line\n        next(csvReader)",
         "detail": "final.cvsToJsonV2",
         "documentation": {}
     },
@@ -138,7 +121,7 @@
         "kind": 5,
         "importPath": "final.cvsToJsonV2",
         "description": "final.cvsToJsonV2",
-        "peekOfCode": "url = r'https://www.jodidata.org/_resources/files/downloads/gas-data/jodi_gas_csv_beta.zip'\nextract_dir = './'\n#UnZip\nprint('Download jodi_gas_csv_beta.zip')\nzip_path, _ = urllib.request.urlretrieve(url)\nwith zipfile.ZipFile(zip_path, \"r\") as f:\n    print('Unzip')\n    f.extractall(extract_dir)\n# Program\ndef csv_to_json(csvFilePath, jsonFilePath):",
+        "peekOfCode": "url = r'https://www.jodidata.org/_resources/files/downloads/gas-data/jodi_gas_csv_beta.zip'\nextract_dir = './'\n# Download\nprint('Download jodi_gas_csv_beta.zip')\nzip_path, _ = urllib.request.urlretrieve(url)\nwith zipfile.ZipFile(zip_path, \"r\") as f:\n    # UnZip\n    print('Unzip')\n    f.extractall(extract_dir)\n# Program",
         "detail": "final.cvsToJsonV2",
         "documentation": {}
     },
@@ -147,7 +130,7 @@
         "kind": 5,
         "importPath": "final.cvsToJsonV2",
         "description": "final.cvsToJsonV2",
-        "peekOfCode": "extract_dir = './'\n#UnZip\nprint('Download jodi_gas_csv_beta.zip')\nzip_path, _ = urllib.request.urlretrieve(url)\nwith zipfile.ZipFile(zip_path, \"r\") as f:\n    print('Unzip')\n    f.extractall(extract_dir)\n# Program\ndef csv_to_json(csvFilePath, jsonFilePath):\n    print('Processing output csv data to json')",
+        "peekOfCode": "extract_dir = './'\n# Download\nprint('Download jodi_gas_csv_beta.zip')\nzip_path, _ = urllib.request.urlretrieve(url)\nwith zipfile.ZipFile(zip_path, \"r\") as f:\n    # UnZip\n    print('Unzip')\n    f.extractall(extract_dir)\n# Program\ndef csv_to_json(csvFilePath, jsonFilePath):",
         "detail": "final.cvsToJsonV2",
         "documentation": {}
     },

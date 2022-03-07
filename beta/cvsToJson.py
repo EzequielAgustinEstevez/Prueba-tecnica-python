@@ -4,7 +4,6 @@ import uuid
 import zipfile
 import urllib
 import urllib.request
-import time
 
 
 #import requests
@@ -23,7 +22,6 @@ with zipfile.ZipFile(zip_path, "r") as f:
 # Program
 def csv_to_json(csvFilePath, jsonFilePath):
     print('Interpret csv data to code')
-    time.sleep(4)
     
     # Open csv file
     with open(csvFilePath, encoding='utf-8') as csvf:

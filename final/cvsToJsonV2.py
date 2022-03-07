@@ -1,33 +1,30 @@
 import csv
 import json
-from operator import index
 import uuid
 import zipfile
-import urllib
 import urllib.request
-import time
 
 
-# Download
 url = r'https://www.jodidata.org/_resources/files/downloads/gas-data/jodi_gas_csv_beta.zip'
 extract_dir = './'
 
-#UnZip
+# Download
 print('Download jodi_gas_csv_beta.zip')
 zip_path, _ = urllib.request.urlretrieve(url)
 with zipfile.ZipFile(zip_path, "r") as f:
+    # UnZip
     print('Unzip')
     f.extractall(extract_dir)
 
 # Program
 def csv_to_json(csvFilePath, jsonFilePath):
-    print('Processing output csv data to json')
-    time.sleep( 4 )    # Open the json file to enter line by line the result of the loop for
+    print('Writing one series per line in data.json')
+    # Opens of the Json file write mode to enter the result of the loop line by line for
     dataJson = open(jsonFilePath, 'w')
 
     # Open csv file
     with open(csvFilePath, encoding='utf-8') as csvf:
-        # read csv file data using the csv library, delimiter by","
+        # read csv file data using the csv library, delimiter by ","
         csvReader = csv.reader(csvf, delimiter=',')
         # Ignore first line
         next(csvReader)
@@ -54,7 +51,7 @@ def csv_to_json(csvFilePath, jsonFilePath):
             # Set the points to data
             data['points'] = points
 
-            # Load additional metadata rows to field
+            # Load additional metadata rows to fields
             fields['REF_AREA'] = row[0]
             fields['ENERGY_PRODUCT'] = row[2]
             fields['FLOW_BREAKDOWN'] = row[3]
@@ -63,11 +60,12 @@ def csv_to_json(csvFilePath, jsonFilePath):
             # Set the field to data
             data['fields'] = fields
 
-            # Add data to dataJson using the json library
+            # Add data to dataJson
             json.dump(data, dataJson)
             # New line to add and persist with the last line
             dataJson.write('\n')
     print('data.json ready')
+    # Close the json file
     dataJson.close()
 
 
