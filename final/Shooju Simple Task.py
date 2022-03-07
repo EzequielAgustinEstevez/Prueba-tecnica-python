@@ -13,7 +13,7 @@ print('Download jodi_gas_csv_beta.zip')
 zip_path, _ = urllib.request.urlretrieve(url)
 with zipfile.ZipFile(zip_path, "r") as f:
     # UnZip
-    print('Unzip')
+    print('Unziping')
     f.extractall(extract_dir)
 
 # Program

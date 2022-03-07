@@ -2,30 +2,25 @@ import csv
 import json
 import uuid
 import zipfile
-import urllib
 import urllib.request
 
-
-#import requests
-# Download
-print('Download jodi_gas_csv_beta.zip')
 url = r'https://www.jodidata.org/_resources/files/downloads/gas-data/jodi_gas_csv_beta.zip'
 extract_dir = './'
-output = r'./jodi_gas_csv_beta.zip'
 
-#UnZip
-print('Unziping')
+# Download
+print('Download jodi_gas_csv_beta.zip')
 zip_path, _ = urllib.request.urlretrieve(url)
 with zipfile.ZipFile(zip_path, "r") as f:
+    #UnZip
+    print('Unziping')
     f.extractall(extract_dir)
 
 # Program
 def csv_to_json(csvFilePath, jsonFilePath):
     print('Interpret csv data to code')
-    
     # Open csv file
     with open(csvFilePath, encoding='utf-8') as csvf:
-        # read csv file data using the csv library's dictionary delimiter by ","
+        # read csv file data using the csv library, delimiter by ","
         csvReader = csv.reader(csvf, delimiter=',')
         # Ignore first line
         next(csvReader)
